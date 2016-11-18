@@ -41,8 +41,8 @@ class Adjustments extends CORE_Controller
             array(
                 'products.product_id',
                 'products.product_code',
+                'products.product_name',
                 'products.product_desc',
-                'products.product_desc1',
                 'products.is_tax_exempt',
                 'FORMAT(products.sale_price,2)as sale_price',
                 'FORMAT(products.purchase_cost,2)as purchase_cost',
@@ -85,7 +85,7 @@ class Adjustments extends CORE_Controller
                     array(
                         'adjustment_items.*',
                         'products.product_code',
-                        'products.product_desc',
+                        'products.product_name',
                         'units.unit_id',
                         'units.unit_name'
                     ),
