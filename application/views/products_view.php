@@ -90,17 +90,19 @@
                         <li><a href="dashboard">Dashboard</a></li>
                         <li><a href="products">Products</a></li>
                     </ol>
-
                     <div class="container-fluid">
                         <div data-widget-group="group1">
                             <div class="row">
                                 <div class="col-md-12">
 
                                     <div id="div_product_list">
-                                        <div class="panel panel-default">
+                                        <div class="panel panel-primary">
+                                            <div class="panel-heading">
+                                                <h2>Product Management</h2>
+                                            </div>
                                             <div class="panel-body table-responsive">
                                                 <table id="tbl_products" class="table table-striped table-bordered" cellspacing="0" width="100%">
-                                                    <thead>
+                                                    <thead class="table-erp">
                                                     <tr>
                                                         <th></th>
                                                         <th>PLU</th>
@@ -134,9 +136,9 @@
                                                         <label class="col-md-2 col-md-offset-1 control-label">PLU :</label>
                                                         <div class="col-md-7">
                                                             <div class="input-group">
-                                                                                    <span class="input-group-addon">
-                                                                                        <i class="fa fa-file-code-o"></i>
-                                                                                    </span>
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-file-code-o"></i>
+                                                                </span>
                                                                 <input type="text" name="product_code" class="form-control" value="">
                                                             </div>
                                                         </div>
@@ -192,9 +194,7 @@
                                                             </select>
 
                                                         </div>
-
                                                     </div>
-
                                                     <div class="form-group">
                                                         <label class="col-md-2 col-md-offset-1 control-label">* Type :</label>
                                                         <div class="col-md-7">
@@ -204,9 +204,7 @@
                                                                 <?php } ?>
                                                             </select>
                                                         </div>
-
                                                     </div>
-
                                                     <div class="form-group">
                                                         <label class="col-md-2 col-md-offset-1 control-label">Link to Account (Income):</label>
                                                         <div class="col-md-7">
@@ -219,10 +217,7 @@
 
                                                             <span class="help-block m-b-none">Please select none if this will not be recorded on Journal.</span>
                                                         </div>
-
                                                     </div>
-
-
                                                     <div class="form-group">
                                                         <label class="col-md-2 col-md-offset-1 control-label">Link to Account (Expense):</label>
                                                         <div class="col-md-7">
@@ -235,50 +230,31 @@
 
                                                             <span class="help-block m-b-none">Please select none if this will not be recorded on Journal.</span>
                                                         </div>
-
                                                     </div>
-
-
-
-
                                                     <div class="form-group">
                                                         <div class="col-md-7 col-md-offset-3">
 
                                                             <label><input type="checkbox" name="is_tax_exempt" value="1"  checked> Tax Exempt</label>
                                                         </div>
-
-
                                                     </div>
-
-
-
-
-
-
                                                     <div class="form-group">
                                                         <label class="col-md-2 col-md-offset-1 control-label">Purchase Cost :</label>
                                                         <div class="col-md-7">
                                                             <input type="text" name="purchase_cost" class="form-control numeric">
                                                         </div>
                                                     </div>
-
                                                     <div class="form-group">
                                                         <label class="col-md-2 col-md-offset-1 control-label">Markup Percent :</label>
                                                         <div class="col-md-7">
                                                             <input type="text" name="markup_percent" class="form-control  numeric">
                                                         </div>
                                                     </div>
-
                                                     <div class="form-group">
                                                         <label class="col-md-2 col-md-offset-1 control-label">Sale Price :</label>
                                                         <div class="col-md-7">
                                                             <input type="text" name="sale_price" class="form-control  numeric">
                                                         </div>
                                                     </div>
-
-
-
-
                                                     <div class="form-group">
                                                         <label class="col-md-2 col-md-offset-1 control-label">Warn Qty :</label>
                                                         <div class="col-md-7">
@@ -292,13 +268,6 @@
                                                             <input type="text" name="product_ideal" class="form-control numeric">
                                                         </div>
                                                     </div>
-
-
-
-
-
-
-
                                                     <br /><br />
                                                 </form>
                                             </div>
@@ -565,9 +534,9 @@ $(document).ready(function(){
         $('.numeric').autoNumeric('init');
 
         var createToolBarButton=function(){
-            var _btnNew='<button class="btn btn-primary"  id="btn_new" style="text-transform: capitalize;font-family: Tahoma, Georgia, Serif;" data-toggle="modal" data-target="" data-placement="left" title="Create New product" >'+
+            var _btnNew='<button class="btn btn-green" id="btn_new" style="text-transform: capitalize;font-family: Tahoma, Georgia, Serif;" data-toggle="modal" data-target="" data-placement="left" title="Create New product" >'+
                 '<i class="fa fa-file"></i> Create New product</button>';
-            $("div.toolbar").html(_btnNew);
+            $("div .toolbar").html(_btnNew);
         }();
     }();
 

@@ -2,7 +2,7 @@ $(function() {
 
 	var sidebarColors = "sidebar-default sidebar-bluegraylight sidebar-yellow sidebar-light-blue sidebar-black sidebar-graylight sidebar-gray sidebar-bluegray sidebar-cyan sidebar-red sidebar-orange sidebar-lime sidebar-deep-orange sidebar-light-green sidebar-green sidebar-pink sidebar-deep-purple sidebar-amber sidebar-brown sidebar-midnightblue sidebar-blue sidebar-teal sidebar-purple sidebar-indigo navbar-default navbar-graylight navbar-bluegray navbar-midnightblue navbar-bluegraylight navbar-amber navbar-deep-purple navbar-light-blue navbar-black navbar-brown navbar-orange navbar-pink navbar-lime navbar-red navbar-deep-orange navbar-yellow navbar-blue navbar-teal navbar-light-green navbar-purple navbar-gray navbar-green navbar-indigo navbar-cyan";
 	var headerColors = "navbar-default navbar-gray navbar-black navbar-bluegray navbar-midnightblue navbar-green navbar-orange navbar-pink navbar-blue navbar-deep-orange navbar-lime navbar-yellow navbar-light-blue navbar-light-green navbar-deep-purple navbar-graylight navbar-brown navbar-amber navbar-teal navbar-red navbar-purple navbar-bluegraylight navbar-indigo navbar-cyan";
-
+	
 	//Show Switcher
 		$(".demo-options-icon").click(function () {
 			$('.demo-options').toggleClass("active");

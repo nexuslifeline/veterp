@@ -37,9 +37,10 @@
         }
 
         td.details-control {
-            background: url('assets/img/Folder_Closed.png') no-repeat center center;
+            background: url('assets/img/print.png') no-repeat center center;
             cursor: pointer;
         }
+
         tr.details td.details-control {
             background: url('assets/img/Folder_Opened.png') no-repeat center center;
         }
@@ -85,7 +86,19 @@
             text-align: right;
         }
 
+       /* .container-fluid {
+            padding: 0 !important;
+        }
 
+        .panel-body {
+            padding: 0 !important;
+        }*/
+
+        #btn_new {
+            margin-top: 10px;
+            margin-bottom: 10px;
+            text-transform: uppercase!important;
+        }
 
         @media screen and (max-width: 480px) {
 
@@ -145,13 +158,11 @@
 
 <div id="div_sales_invoice_list">
 
-
-
-
-    <div class="panel panel-default">
+    <div class="panel panel-default" style="border-top: 3px solid #2196f3;">
         <div class="panel-body table-responsive">
+        <h2>Sales Invoice</h2>
             <table id="tbl_sales_invoice" class="table table-striped table-bordered" cellspacing="0" width="100%">
-                <thead>
+                <thead class="table-erp">
                 <tr>
                     <th></th>
                     <th>Invoice #</th>
@@ -175,34 +186,38 @@
 
 
 
-        <div class="panel-footer"></div>
+        <!-- <div class="panel-footer"></div> -->
     </div>
 
 </div>
 
 
 <div id="div_sales_invoice_fields" style="display: none;">
-<div class="panel panel-default">
-    <div class="panel-heading">
+<div class="panel panel-default" style="border-top: 3px solid #2196f3;">
+   <!--  <div class="panel-heading panel-erp">
         <h2>Sales Invoice</h2>
 
-        <div class="pull-right"><strong>[ <a id="btn_receive_so" href="#" style="text-decoration: underline;">Create from Sales Order</a> ]</strong></div>
+        <div class="pull-right"><strong>[ <a id="btn_receive_so" href="#" style="text-decoration: underline; color: white;">Create from Sales Order</a> ]</strong></div>
         <div class="panel-ctrls" data-actions-container=""></div>
-    </div>
+    </div> -->
 
     <div class="panel-body">
-
-        <div class="row custom_frame">
+    <h2 class="sales_invoice_title"></h2>
+    <div class="btn btn-green" style="margin-left: 10px;">
+        <strong><a id="btn_receive_so" href="#" style="text-decoration: none; color: white;">Create from Sales Order</a></strong>
+    </div>
+    <div class="panel-ctrls" data-actions-container=""></div>
+        <div class="row ">
             <form id="frm_sales_invoice" role="form" class="form-horizontal">
 
                 <br /><br />
                 <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 form-group">
-                    <label class="col-md-3  control-label">* Invoice # :</label>
-                    <div class="col-md-9">
+                    <label class="col-md-4 control-label"><strong>* Invoice # :</strong></label>
+                    <div class="col-md-8">
                         <div class="input-group">
-                                                    <span class="input-group-addon">
-                                                        <i class="fa fa-code"></i>
-                                                    </span>
+                            <span class="input-group-addon">
+                                <i class="fa fa-code"></i>
+                            </span>
                             <input type="text" name="slip_no" class="form-control" placeholder="INV-YYYYMMDD-XXX" readonly>
                         </div>
                     </div>
@@ -210,8 +225,8 @@
 
 
                 <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 form-group">
-                    <label class="col-md-3  control-label"> SO # :</label>
-                    <div class="col-md-9">
+                    <label class="col-md-4  control-label"><strong> SO # :</strong></label>
+                    <div class="col-md-8">
                         <div class="input-group">
                                                     <span class="input-group-addon">
                                                         <i class="fa fa-code"></i>
@@ -223,9 +238,9 @@
 
 
                 <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 form-group">
-                    <label class="col-md-3 control-label">* Customer :</label>
+                    <label class="col-md-4 control-label"><strong>* Customer :</strong></label>
 
-                    <div class="col-md-9">
+                    <div class="col-md-8">
                         <select name="customer" id="cbo_customers" data-error-msg="Customer is required." required>
                             <option value="0">[ Create New Customer ]</option>
                             <?php foreach($customers as $customer){ ?>
@@ -240,9 +255,9 @@
 
 
                 <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 form-group">
-                    <label class="col-md-3 control-label">* Department :</label>
+                    <label class="col-md-4 control-label"><strong>* Department :</strong></label>
 
-                    <div class="col-md-9">
+                    <div class="col-md-8">
                         <select name="department" id="cbo_departments" data-error-msg="Department is required." required>
                             <option value="0">[ Create New Department ]</option>
                             <?php foreach($departments as $department){ ?>
@@ -257,8 +272,8 @@
 
 
                 <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 form-group">
-                    <label class="col-md-3  control-label">Date due : </label>
-                    <div class="col-md-9">
+                    <label class="col-md-4  control-label"><strong> Date due : </strong></label>
+                    <div class="col-md-8">
                         <div class="input-group">
                         <span class="input-group-addon">
                              <i class="fa fa-calendar"></i>
@@ -269,8 +284,8 @@
                 </div>
 
                 <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 form-group">
-                    <label class="col-md-3  control-label">Date invoice : </label>
-                    <div class="col-md-9">
+                    <label class="col-md-4  control-label"><strong> Date invoice : </strong></label>
+                    <div class="col-md-8">
                         <div class="input-group">
                         <span class="input-group-addon">
                              <i class="fa fa-calendar"></i>
@@ -283,8 +298,8 @@
 
 
                 <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12  form-group">
-                    <label class="col-md-3  control-label">Remarks :</label>
-                    <div class="col-md-9">
+                    <label class="col-md-4  control-label"><strong>Remarks :</strong></label>
+                    <div class="col-md-8">
                         <textarea name="remarks" class="form-control" placeholder="Remarks"></textarea>
 
                     </div>
@@ -292,9 +307,10 @@
 
             </form>
         </div>
+        <hr>
 
-
-        <div class="row custom_frame">
+        <div class="row">
+            <div class="container-fluid">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><br />
                 <label class="control-label" style="font-family: Tahoma;"><strong>Enter PLU or Search Item :</strong></label>
                 <div id="custom-templates">
@@ -304,7 +320,7 @@
                 <form id="frm_items">
                     <div class="table-responsive">
                         <table id="tbl_items" class="table table-striped table-bordered" cellspacing="0" width="100%" style="font-font:tahoma;">
-                            <thead>
+                            <thead class="table-erp">
                             <tr>
 
                                 <th width="10%">Qty</th>
@@ -324,26 +340,25 @@
                             </thead>
                             <tbody>
                             <!--<tr>
+                                    <td width="10%"><input type="text" class="numeric form-control" align="right"></td>
+                                    <td width="5%">pcs</td>
+                                    <td width="30%">Computer Case</td>
+                                    <td width="12%"><input type="text" class="numeric form-control"></td>
+                                    <td width="12%"><input type="text" class="numeric form-control"></td>
+                                    <td></td>
+                                    <td width="15%">
+                                        <select class="form-control">
+                                            <?php foreach($tax_types as $tax_type){ ?>
+                                                <option value="<?php echo $tax_type->tax_type_id; ?>"><?php echo $tax_type->tax_type; ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </td>
+                                    <td width="12%" align="right"><input type="text" class="numeric form-control"></td>
+                                    <td></td>
+                                    <td></td>
 
-                                                <td width="10%"><input type="text" class="numeric form-control" align="right"></td>
-                                                <td width="5%">pcs</td>
-                                                <td width="30%">Computer Case</td>
-                                                <td width="12%"><input type="text" class="numeric form-control"></td>
-                                                <td width="12%"><input type="text" class="numeric form-control"></td>
-                                                <td></td>
-                                                <td width="15%">
-                                                    <select class="form-control">
-                                                        <?php foreach($tax_types as $tax_type){ ?>
-                                                            <option value="<?php echo $tax_type->tax_type_id; ?>"><?php echo $tax_type->tax_type; ?></option>
-                                                        <?php } ?>
-                                                    </select>
-                                                </td>
-                                                <td width="12%" align="right"><input type="text" class="numeric form-control"></td>
-                                                <td></td>
-                                                <td></td>
-
-                                                <td><button type="button" class="btn btn-default"><i class="fa fa-trash"></i></button></td>
-                                            </tr>-->
+                                    <td><button type="button" class="btn btn-default"><i class="fa fa-trash"></i></button></td>
+                                </tr>-->
                             </tbody>
 
 
@@ -383,6 +398,7 @@
                 </div>
 
 
+            </div>
             </div>
         </div>
 
@@ -429,14 +445,14 @@
 <div id="modal_confirmation" class="modal fade" tabindex="-1" role="dialog"><!--modal-->
     <div class="modal-dialog modal-sm">
         <div class="modal-content"><!---content--->
-            <div class="modal-header">
+            <div class="modal-header modal-erp">
                 <button type="button" class="close"   data-dismiss="modal" aria-hidden="true">X</button>
-                <h4 class="modal-title"><span id="modal_mode"> </span>Confirm Deletion</h4>
+                <h4 class="modal-title" style="color: white;"><span id="modal_mode"> </span>Confirm Deletion</h4>
 
             </div>
 
             <div class="modal-body">
-                <p id="modal-body-message">Are you sure ?</p>
+                <p id="modal-body-message">Are you sure you want to delete?</p>
             </div>
 
             <div class="modal-footer">
@@ -448,20 +464,17 @@
 </div><!---modal-->
 
 
-
-
 <div id="modal_so_list" class="modal fade" tabindex="-1" role="dialog"><!--modal-->
     <div class="modal-dialog" style="width: 80%;">
-        <div class="modal-content"><!---content--->
-            <div class="modal-header">
+        <div class="modal-content">
+            <div class="modal-header modal-erp">
                 <button type="button" class="close"   data-dismiss="modal" aria-hidden="true">X</button>
-                <h4 class="modal-title"><span id="modal_mode"> </span>Sales Order</h4>
-
+                <h2 class="modal-title" style="color: white;"><span id="modal_mode"> </span>Sales Order</h2>
             </div>
 
             <div class="modal-body">
                 <table id="tbl_so_list" class="table table-striped table-bordered" cellspacing="0" width="100%">
-                    <thead>
+                    <thead class="table-erp">
                     <tr>
                         <th></th>
                         <th>SO#</th>
@@ -481,18 +494,27 @@
             </div>
 
             <div class="modal-footer">
-                <button id="btn_accept" type="button" class="btn btn-primary" data-dismiss="modal" style="text-transform: none;font-family: Tahoma, Georgia, Serif;">Receive this Order</button>
+                <button id="btn_accept" type="button" class="btn btn-green" data-dismiss="modal" style="text-transform: none;font-family: Tahoma, Georgia, Serif;">Receive this Order</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal" style="text-transform: none;font-family: Tahoma, Georgia, Serif;">Cancel</button>
             </div>
         </div><!---content---->
     </div>
 </div><!---modal-->
-
-
-
-
-
-
+<div id="modal_sales_invoice" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header modal-erp" style="padding: 5px !important;">
+                <h3 style="color:white; padding-left: 10px;">Sales Invoice</h3>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid" style="overflow: scroll; width: 100%;">
+                    <salesInvoice id="sales_invoice">
+                    </salesInvoice>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <div id="modal_new_customer" class="modal fade" tabindex="-1" role="dialog"><!--modal-->
     <div class="modal-dialog modal-md">
         <div class="modal-content"><!---content--->
@@ -715,10 +737,10 @@ $(document).ready(function(){
                 {
                     targets:[7],
                     render: function (data, type, full, meta){
-                        var btn_edit='<button class="btn btn-default btn-sm" name="edit_info"  style="margin-left:-15px;" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil"></i> </button>';
-                        var btn_trash='<button class="btn btn-default btn-sm" name="remove_info" style="margin-right:0px;" data-toggle="tooltip" data-placement="top" title="Move to trash"><i class="fa fa-trash-o"></i> </button>';
+                        var btn_edit='<button class="btn btn-primary btn-sm" name="edit_info"  style="margin-left:-15px;" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil"></i> </button>';
+                        var btn_trash='<button class="btn btn-red btn-sm" name="remove_info" style="margin-right:0px;" data-toggle="tooltip" data-placement="top" title="Move to trash"><i class="fa fa-trash-o"></i> </button>';
 
-                        return '<center>'+btn_edit+btn_trash+'</center>';
+                        return '<center>'+btn_edit+"&nbsp;"+btn_trash+'</center>';
                     }
                 }
             ]
@@ -752,11 +774,12 @@ $(document).ready(function(){
                 }
 
             ]
+
         });
 
 
         var createToolBarButton=function(){
-            var _btnNew='<button class="btn btn-primary"  id="btn_new" style="text-transform: none;font-family: Tahoma, Georgia, Serif;" data-toggle="modal" data-target="" data-placement="left" title="Record Sales Invoice" >'+
+            var _btnNew='<button class="btn btn-green" id="btn_new" style="text-transform: none;font-family: Tahoma, Georgia, Serif; " data-toggle="modal" data-target="#salesInvoice" data-placement="left" title="Record Sales Invoice" >'+
                 '<i class="fa fa-file"></i> Record Sales Invoice</button>';
             $("div.toolbar").html(_btnNew);
         }();
@@ -830,11 +853,10 @@ $(document).ready(function(){
             if(suggestion.is_tax_exempt=="0"){ //not tax excempt
                 net_vat=total/(1+(getFloat(tax_rate)/100));
                 vat_input=total-net_vat;
-            }else{
+            }else {
                 tax_rate=0;
                 net_vat=total;
                 vat_input=0;
-
             }
 
 
@@ -888,41 +910,19 @@ $(document).ready(function(){
         var detailRows = [];
 
         $('#tbl_sales_invoice tbody').on( 'click', 'tr td.details-control', function () {
+            
             var tr = $(this).closest('tr');
             var row = dt.row( tr );
-            var idx = $.inArray( tr.attr('id'), detailRows );
-
-            if ( row.child.isShown() ) {
-                tr.removeClass( 'details' );
-                row.child.hide();
-
-                // Remove from the 'open' array
-                detailRows.splice( idx, 1 );
-            }
-            else {
-                tr.addClass( 'details' );
-                //console.log(row.data());
-                var d=row.data();
-
+            var d=row.data();
                 $.ajax({
                     "dataType":"html",
                     "type":"POST",
-                    "url":"Templates/layout/sales-invoice/"+ d.sales_invoice_id+"?type=fullview",
-                    "beforeSend" : function(){
-                        row.child( '<center><br /><img src="assets/img/loader/ajax-loader-lg.gif" /><br /><br /></center>' ).show();
-                    }
+                    "url":"Templates/layout/sales-invoice/"+ d.sales_invoice_id+"?type=fullview"
                 }).done(function(response){
-                    row.child( response ).show();
-                    // Add to the 'open' array
-                    if ( idx === -1 ) {
-                        detailRows.push( tr.attr('id') );
-                    }
+                    $("#sales_invoice").html(response);
+                    $("#modal_sales_invoice").modal('show');
                 });
-
-
-
-
-            }
+        
         } );
 
 
@@ -961,7 +961,6 @@ $(document).ready(function(){
                         detailRows.push( tr.attr('id') );
                     }
                 });
-
 
 
             }
@@ -1066,6 +1065,7 @@ $(document).ready(function(){
 
         $('#btn_new').click(function(){
             _txnMode="new";
+            $('.sales_invoice_title').html('New Sales Invoice');
             //$('.toggle-fullscreen').click();
             clearFields($('#frm_sales_invoice'));
             showList(false);
@@ -1107,6 +1107,7 @@ $(document).ready(function(){
 
             $('#modal_so_list').modal('hide');
             resetSummary();
+
 
             $.ajax({
                 url : 'Sales_order/transaction/item-balance/'+data.sales_order_id,
@@ -1169,6 +1170,7 @@ $(document).ready(function(){
         $('#tbl_sales_invoice tbody').on('click','button[name="edit_info"]',function(){
             ///alert("ddd");
             _txnMode="edit";
+            $('.sales_invoice_title').html('Edit Sales Invoice');
             _selectRowObj=$(this).closest('tr');
             var data=dt.row(_selectRowObj).data();
             _selectedID=data.sales_invoice_id;
@@ -1521,7 +1523,7 @@ $(document).ready(function(){
         '<td style="display: none;"><input name="inv_tax_amount[]" type="text" class="numeric form-control" value="'+ d.inv_tax_amount+'" readonly></td>'+
         '<td style="display: none;"><input name="inv_non_tax_amount[]" type="text" class="numeric form-control" value="'+ d.inv_non_tax_amount+'" readonly></td>'+
         '<td style="display: none;"><input name="product_id[]" type="text" class="numeric form-control" value="'+ d.product_id+'" readonly></td>'+
-        '<td align="center"><button type="button" name="remove_item" class="btn btn-default"><i class="fa fa-trash"></i></button></td>'+
+        '<td align="center"><button type="button" name="remove_item" class="btn btn-red"><i class="fa fa-trash"></i></button></td>'+
         '</tr>';
     };
 

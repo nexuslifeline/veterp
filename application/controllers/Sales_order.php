@@ -241,7 +241,7 @@ class Sales_order extends CORE_Controller
                     array('sales_order.so_no'=>$this->input->post('so_no',TRUE)),
                     'sales_order.sales_order_id'
                 );
-                $sales_order_id=(count($arr_so_info)>0?$arr_so_info[0]->sales_order_id:0);
+                // $sales_order_id=(count($arr_so_info)>0?$arr_so_info[0]->sales_order_id:0);
 
 
 

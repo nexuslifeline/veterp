@@ -118,13 +118,13 @@
     <div class="panel-group panel-default" id="accordionA">
 
 
-        <div class="panel panel-default">
-            <a data-toggle="collapse" data-parent="#accordionA" href="#collapseOne"><div class="panel-heading"><h2 style="font-family:tahoma;">General Journal</h2></div></a>
-            <div id="collapseOne" class="collapse in">
+        <div class="panel panel-default" style="border-top: 3px solid #2196f3;">
+            <!-- <a data-toggle="collapse" data-parent="#accordionA" href="#collapseOne"><div class="panel-heading"><h2 style="font-family:tahoma;">General Journal</h2></div></a>
+            <div id="collapseOne" class="collapse in"> -->
                 <div class="panel-body" style="min-height: 400px;">
-
+                <h2>General Journal</h2>
                     <table id="tbl_accounts_receivable" class="table table-striped table-bordered" cellspacing="0" width="100%">
-                        <thead>
+                        <thead class="table-erp">
                         <tr>
                             <th></th>
                             <th>Txn #</th>
@@ -172,7 +172,6 @@
                     <div class="tab-container tab-left tab-default">
                         <ul class="nav nav-tabs">
                             <li class="active"><a href="#general_journal" data-toggle="tab"><i class="fa fa-bars"></i> Transaction</a></li>
-
                         </ul>
                         <div class="tab-content">
                             <div class="tab-pane active" id="general_journal" style="min-height: 300px;">
@@ -472,10 +471,10 @@ $(document).ready(function(){
                 {
                     targets:[7],
                     render: function (data, type, full, meta){
-                        var btn_edit='<button class="btn btn-default btn-sm" name="edit_info"  style="margin-left:-15px;" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil"></i> </button>';
-                        var btn_trash='<button class="btn btn-default btn-sm" name="remove_info" style="margin-right:0px;" data-toggle="tooltip" data-placement="top" title="Move to trash"><i class="fa fa-trash-o"></i> </button>';
+                        var btn_edit='<button class="btn btn-primary btn-sm" name="edit_info"  style="margin-left:-15px;" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil"></i> </button>';
+                        var btn_trash='<button class="btn btn-red btn-sm" name="remove_info" style="margin-right:0px;" data-toggle="tooltip" data-placement="top" title="Move to trash"><i class="fa fa-trash-o"></i> </button>';
 
-                        return '<center>'+btn_edit+btn_trash+'</center>';
+                        return '<center>'+btn_edit+"&nbsp;"+btn_trash+'</center>';
                     }
                 }
             ]
@@ -502,7 +501,7 @@ $(document).ready(function(){
 
 
         var createToolBarButton=function() {
-            var _btnNew='<button class="btn btn-primary"  id="btn_new" style="text-transform: capitalize;font-family: Tahoma, Georgia, Serif;" data-toggle="modal" data-target="" data-placement="left" title="Create New Journal" >'+
+            var _btnNew='<button class="btn btn-green"  id="btn_new" style="text-transform: capitalize;font-family: Tahoma, Georgia, Serif;" data-toggle="modal" data-target="" data-placement="left" title="Create New Journal" >'+
                 '<i class="fa fa-file-text-o"></i> Create New Journal</button>';
             $("div.toolbar").html(_btnNew);
         }();
