@@ -66,7 +66,7 @@
 
         .numeric{
             text-align: right;
-            width: 60%;
+            width:60%;
         }
 
     </style>
