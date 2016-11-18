@@ -522,6 +522,15 @@ $(document).ready(function(){
             padding-left:0px !important;
         }
 
+        .form-group {
+            padding:0 !important;
+            margin:5px !important;
+        }
+
+        /*#label {
+            text-align:right;
+        }*/
+
     </style>
 </head>
 
@@ -613,8 +622,8 @@ $(document).ready(function(){
                                 <div class="row">
                                     <div class="col-md-8">
                                         <div class="col-md-12">
-                                            <div class="col-md-4">
-                                                 <label class="control-label boldlabel" style="text-align:right;">* Supplier Name :</label>
+                                            <div class="col-md-4" id="label">
+                                                 <label class="control-label boldlabel" style="text-align:right;"><font color="red"><b>*</b></font> Supplier Name :</label>
                                             </div>
                                             <div class="form-group">
                                                 <div class="input-group">
@@ -627,8 +636,8 @@ $(document).ready(function(){
                                         </div>
                                     
                                         <div class="col-md-12">
-                                            <div class="col-md-4">
-                                                 <label class="control-label boldlabel" style="text-align:right;">* Address :</label>
+                                            <div class="col-md-4" id="label">
+                                                 <label class="control-label boldlabel" style="text-align:right;"><font color="red"><b>*</b></font> Address :</label>
                                             </div>
                                             <div class="form-group">
                                                 <div class="input-group">
@@ -641,7 +650,7 @@ $(document).ready(function(){
                                         </div>
                                     
                                         <div class="col-md-12">
-                                            <div class="col-md-4">
+                                            <div class="col-md-4" id="label">
                                                  <label class="control-label boldlabel" style="text-align:right;">Email Address :</label>
                                             </div>
                                             <div class="form-group">
@@ -655,7 +664,7 @@ $(document).ready(function(){
                                         </div>
                                     
                                         <div class="col-md-12">
-                                            <div class="col-md-4">
+                                            <div class="col-md-4" id="label">
                                                  <label class="control-label boldlabel" style="text-align:right;">Landline :</label>
                                             </div>
                                             <div class="form-group">
@@ -669,7 +678,7 @@ $(document).ready(function(){
                                         </div>
 
                                         <div class="col-md-12">
-                                            <div class="col-md-4">
+                                            <div class="col-md-4" id="label">
                                                  <label class="control-label boldlabel" style="text-align:right;">Mobile No :</label>
                                             </div>
                                             <div class="form-group">
@@ -683,7 +692,7 @@ $(document).ready(function(){
                                         </div>
 
                                         <div class="col-md-12">
-                                            <div class="col-md-4">
+                                            <div class="col-md-4" id="label">
                                                  <label class="control-label boldlabel" style="text-align:right;">TIN # :</label>
                                             </div>
                                             <div class="form-group">
@@ -697,8 +706,8 @@ $(document).ready(function(){
                                         </div>
 
                                         <div class="col-md-12">
-                                            <div class="col-md-4">
-                                                 <label class="control-label boldlabel" style="text-align:right;">* Tax :</label>
+                                            <div class="col-md-4" id="label">
+                                                 <label class="control-label boldlabel" style="text-align:right;"><font color="red"><b>*</b></font> Tax :</label>
                                             </div>
                                             <div class="form-group">
                                                 <div class="input-group">
@@ -719,7 +728,7 @@ $(document).ready(function(){
                                     <div class="col-md-4">
                                         <div class="col-md-12">
                                             <div class="col-md-12">
-                                                <label class="control-label boldlabel" style="text-align:left;padding-top:10px;"><i class="fa fa-bank" aria-hidden="true" style="padding-right:10px;"></i>Supplier's Photo</label>
+                                                <label class="control-label boldlabel" style="text-align:left;padding-top:10px;"><i class="fa fa-user" aria-hidden="true" style="padding-right:10px;"></i>Supplier's Photo</label>
                                                 <hr style="margin-top:0px !important;height:1px;background-color:black;">
                                             </div>
                                             <div style="width:100%;height:300px;border:2px solid #34495e;border-radius:5px;">
