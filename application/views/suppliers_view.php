@@ -71,13 +71,9 @@
     <script src="assets/plugins/formatter/accounting.js" type="text/javascript"></script>
 
     <script>
-
 $(document).ready(function(){
     var dt; var _txnMode; var _selectedID; var _selectRowObj; var _cboItemTypes;
-
     var initializeControls=function(){
-
-
         var initializeControls=function() {
             dt=$('#tbl_suppliers').DataTable({
                 "dom": '<"toolbar">frtip',
@@ -101,44 +97,34 @@ $(document).ready(function(){
                         render: function (data, type, full, meta){
                             var btn_edit='<button class="btn btn-default btn-sm" name="edit_info"  style="margin-left:-15px;" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil"></i> </button>';
                             var btn_trash='<button class="btn btn-default btn-sm" name="remove_info" style="margin-right:0px;" data-toggle="tooltip" data-placement="top" title="Move to trash"><i class="fa fa-trash-o"></i> </button>';
-
                             return '<center>'+btn_edit+btn_trash+'</center>';
                         }
                     }
                 ]
             });
-
             var createToolBarButton=function() {
                 var _btnNew='<button class="btn btn-primary"  id="btn_new" style="text-transform: capitalize;font-family: Tahoma, Georgia, Serif;" data-toggle="modal" data-target="" data-placement="left" title="New supplier" >'+
                     'Create New Supplier</button>';
                 $("div.toolbar").html(_btnNew);
             }();
-
         }();
-
         $('.numeric').autoNumeric('init');
-
     }();
-
     var bindEventHandlers=(function(){
         var detailRows = [];
-
         $('#tbl_suppliers tbody').on( 'click', 'tr td.details-control', function () {
             var tr = $(this).closest('tr');
             var row = dt.row( tr );
             var idx = $.inArray( tr.attr('id'), detailRows );
-
             if ( row.child.isShown() ) {
                 tr.removeClass( 'details' );
                 row.child.hide();
-
                 // Remove from the 'open' array
                 detailRows.splice( idx, 1 );
             }
             else {
                 tr.addClass( 'details' );
                 var d=row.data();
-
                 $.ajax({
                     "dataType":"html",
                     "type":"POST",
@@ -155,24 +141,19 @@ $(document).ready(function(){
                 });
             }
         } );
-
         $('#btn_new').click(function(){
             _txnMode="new";
             $('#modal_create_suppliers').modal('show');
             clearFields($('#frm_supplier'));
         });
-
         $('#btn_browse').click(function(event){
             event.preventDefault();
             $('input[name="file_upload[]"]').click();
         });
-
-
         $('#btn_remove_photo').click(function(event){
             event.preventDefault();
             $('img[name="img_supplier"]').attr('src','assets/img/anonymous-icon.png');
         });
-
         $('#tbl_suppliers tbody').on('click','button[name="edit_info"]',function(){
             _txnMode="edit";
             $('#modal_create_suppliers').modal('show');
@@ -188,45 +169,33 @@ $(document).ready(function(){
                     }
                 });
             });
-
             $('img[name="img_supplier"]').attr('src',data.photo_path);
                 showList(false);
-
         });
-
-
         $('input[name="purchase_cost"],input[name="markup_percent"],input[name="sale_price"]').keyup(function(){
             reComputeSRP();
         });
-
         $('#tbl_suppliers tbody').on('click','button[name="remove_info"]',function(){
             _selectRowObj=$(this).closest('tr');
             var data=dt.row(_selectRowObj).data();
             _selectedID=data.supplier_id;
-
         });
         
-
         $('#btn_yes').click(function(){
             removeProduct().done(function(response){
                 showNotification(response);
                 dt.row(_selectRowObj).remove().draw();
             });
         });
-
         $('input[name="file_upload[]"]').change(function(event){
             var _files=event.target.files;
-
             $('#div_img_product').hide();
             $('#div_img_loader').show();
-
             var data=new FormData();
             $.each(_files,function(key,value){
                 data.append(key,value);
             });
-
             console.log(_files);
-
             $.ajax({
                 url : 'Suppliers/transaction/upload',
                 type : "POST",
@@ -244,11 +213,9 @@ $(document).ready(function(){
                 }
             });
         });
-
         $('#btn_cancel').click(function(){
             showList(true);
         });
-
         $('#btn_save').click(function(){
             if(validateRequiredFields($('#frm_supplier'))){
                 if(_txnMode=="new"){
@@ -276,13 +243,10 @@ $(document).ready(function(){
             }
         });
     })();
-
     var validateRequiredFields=function(f){
         var stat=true;
-
         $('div.form-group').removeClass('has-error');
         $('input[required],textarea[required],select[required]',f).each(function(){
-
                 if($(this).is('select')){
                 if($(this).val()==0){
                     showNotification({title:"Error!",stat:"error",msg:$(this).data('error-msg')});
@@ -302,14 +266,11 @@ $(document).ready(function(){
                 }
             }
         });
-
         return stat;
     };
-
     var createSupplier=function() {
         var _data=$('#frm_supplier').serializeArray();
         _data.push({name : "photo_path" ,value : $('img[name="img_supplier"]').attr('src')});
-
         return $.ajax({
             "dataType":"json",
             "type":"POST",
@@ -318,12 +279,10 @@ $(document).ready(function(){
             "beforeSend": showSpinningProgress($('#btn_save'))
         });
     };
-
     var updateSupplier=function() {
         var _data=$('#frm_supplier').serializeArray();
         _data.push({name : "photo_path" ,value : $('img[name="img_supplier"]').attr('src')});
         _data.push({name : "supplier_id" ,value : _selectedID});
-
         return $.ajax({
             "dataType":"json",
             "type":"POST",
@@ -332,7 +291,6 @@ $(document).ready(function(){
             "beforeSend": showSpinningProgress($('#btn_save'))
         });
     };
-
     var removeSupplier=function() {
         return $.ajax({
             "dataType":"json",
@@ -341,7 +299,6 @@ $(document).ready(function(){
             "data":{supplier_id : _selectedID}
         });
     };
-
     var showList=function(b){
         if(b){
             $('#div_supplier_list').show();
@@ -351,7 +308,6 @@ $(document).ready(function(){
             $('#div_product_fields').show();
         }
     };
-
     var showNotification=function(obj){
         PNotify.removeAll();
         new PNotify({
@@ -360,40 +316,33 @@ $(document).ready(function(){
             type:  obj.stat
         });
     };
-
     var showSpinningProgress=function(e){
         $(e).find('span').toggleClass('glyphicon glyphicon-refresh spinning');
     };
-
     /*var clearFields=function(f){
         $('input,textarea',f).val('');
         //$(f).find('select').select2('val',null);
         $(f).find('input:first').focus();
     };*/
-
     var clearFields=function(f){
         $('input,textarea,select',f).val('');
         $(f).find('input:first').focus();
         ('#is_tax_exempt',f).prop('checked', false);
     };
-
     var clearFieldsModal=function(f){
         $('input,textarea',f).val('');
         $(f).find('input:first').focus();
     };
-
     var clearFieldsCategory=function(f){
         $('#category_name').val('');
         $('#category_desc').val('');
         $(f).find('select:first').focus();
     };
-
     var clearFieldsUnit=function(f){
         $('#unit_name').val('');
         $('#unit_desc').val('');
         $(f).find('select:first').focus();
     };
-
     function format ( d ) {
             // `d` is the original data object for the row
             //alert(d.photo_path);
@@ -424,11 +373,9 @@ $(document).ready(function(){
             '</tr>' +
             '</tbody></table><br />';
         };
-
     var getFloat=function(f){
         return parseFloat(accounting.unformat(f));
     };
-
     /*$('#frm_supplier').on('click','input[id="is_tax_exempt"]',function(){
         if(_isTaxExempt==0) {
             this.checked = true;
@@ -441,15 +388,12 @@ $(document).ready(function(){
         }
     });*/
 });
-
 </script>
 
     <style>
-
         .toolbar{
             float: left;
         }
-
         td.details-control {
             background: url('assets/img/Folder_Closed.png') no-repeat center center;
             cursor: pointer;
@@ -457,12 +401,10 @@ $(document).ready(function(){
         tr.details td.details-control {
             background: url('assets/img/Folder_Opened.png') no-repeat center center;
         }
-
         .child_table{
             padding: 5px;
             border: 1px #ff0000 solid;
         }
-
         .glyphicon.spinning {
             animation: spin 1s infinite linear;
             -webkit-animation: spin2 1s infinite linear;
@@ -474,63 +416,42 @@ $(document).ready(function(){
             from { transform: scale(1) rotate(0deg); }
             to { transform: scale(1) rotate(360deg); }
         }
-
         @-webkit-keyframes spin2 {
             from { -webkit-transform: rotate(0deg); }
             to { -webkit-transform: rotate(360deg); }
         }
-
         .numeric{
             text-align: right;
             width: 60%;
         }
-
         .container-fluid {
             padding: 0 !important;
         }
-
         .panel-body {
             padding: 0 !important;
         }
-
         #btn_new {
             text-transform: uppercase !important;
         }
-
         .modal-body {
             text-transform: bold;
         }
-
         .boldlabel {
             font-weight: bold;
         }
-
         .inlinecustomlabel {
             font-weight: bold;
         }
-
         .form-group {
             padding-bottom: 3px;
         }
-
         #is_tax_exempt {
             width:23px;
             height:23px;
         }
-
         .modal-body {
             padding-left:0px !important;
         }
-
-        .form-group {
-            padding:0 !important;
-            margin:5px !important;
-        }
-
-        /*#label {
-            text-align:right;
-        }*/
-
     </style>
 </head>
 
@@ -622,8 +543,8 @@ $(document).ready(function(){
                                 <div class="row">
                                     <div class="col-md-8">
                                         <div class="col-md-12">
-                                            <div class="col-md-4" id="label">
-                                                 <label class="control-label boldlabel" style="text-align:right;"><font color="red"><b>*</b></font> Supplier Name :</label>
+                                            <div class="col-md-4">
+                                                 <label class="control-label boldlabel" style="text-align:right;">* Supplier Name :</label>
                                             </div>
                                             <div class="form-group">
                                                 <div class="input-group">
@@ -636,8 +557,8 @@ $(document).ready(function(){
                                         </div>
                                     
                                         <div class="col-md-12">
-                                            <div class="col-md-4" id="label">
-                                                 <label class="control-label boldlabel" style="text-align:right;"><font color="red"><b>*</b></font> Address :</label>
+                                            <div class="col-md-4">
+                                                 <label class="control-label boldlabel" style="text-align:right;">* Address :</label>
                                             </div>
                                             <div class="form-group">
                                                 <div class="input-group">
@@ -650,7 +571,7 @@ $(document).ready(function(){
                                         </div>
                                     
                                         <div class="col-md-12">
-                                            <div class="col-md-4" id="label">
+                                            <div class="col-md-4">
                                                  <label class="control-label boldlabel" style="text-align:right;">Email Address :</label>
                                             </div>
                                             <div class="form-group">
@@ -664,7 +585,7 @@ $(document).ready(function(){
                                         </div>
                                     
                                         <div class="col-md-12">
-                                            <div class="col-md-4" id="label">
+                                            <div class="col-md-4">
                                                  <label class="control-label boldlabel" style="text-align:right;">Landline :</label>
                                             </div>
                                             <div class="form-group">
@@ -678,7 +599,7 @@ $(document).ready(function(){
                                         </div>
 
                                         <div class="col-md-12">
-                                            <div class="col-md-4" id="label">
+                                            <div class="col-md-4">
                                                  <label class="control-label boldlabel" style="text-align:right;">Mobile No :</label>
                                             </div>
                                             <div class="form-group">
@@ -692,7 +613,7 @@ $(document).ready(function(){
                                         </div>
 
                                         <div class="col-md-12">
-                                            <div class="col-md-4" id="label">
+                                            <div class="col-md-4">
                                                  <label class="control-label boldlabel" style="text-align:right;">TIN # :</label>
                                             </div>
                                             <div class="form-group">
@@ -706,8 +627,8 @@ $(document).ready(function(){
                                         </div>
 
                                         <div class="col-md-12">
-                                            <div class="col-md-4" id="label">
-                                                 <label class="control-label boldlabel" style="text-align:right;"><font color="red"><b>*</b></font> Tax :</label>
+                                            <div class="col-md-4">
+                                                 <label class="control-label boldlabel" style="text-align:right;">* Tax :</label>
                                             </div>
                                             <div class="form-group">
                                                 <div class="input-group">
@@ -728,7 +649,7 @@ $(document).ready(function(){
                                     <div class="col-md-4">
                                         <div class="col-md-12">
                                             <div class="col-md-12">
-                                                <label class="control-label boldlabel" style="text-align:left;padding-top:10px;"><i class="fa fa-user" aria-hidden="true" style="padding-right:10px;"></i>Supplier's Photo</label>
+                                                <label class="control-label boldlabel" style="text-align:left;padding-top:10px;"><i class="fa fa-bank" aria-hidden="true" style="padding-right:10px;"></i>Supplier's Photo</label>
                                                 <hr style="margin-top:0px !important;height:1px;background-color:black;">
                                             </div>
                                             <div style="width:100%;height:300px;border:2px solid #34495e;border-radius:5px;">
