@@ -49,23 +49,27 @@ class Products extends CORE_Controller
                 $m_products->created_by_user = $this->session->user_id;
 
                 $m_products->product_code = $this->input->post('product_code', TRUE);
+                $m_products->product_name = $this->input->post('product_name', TRUE);
                 $m_products->product_desc = $this->input->post('product_desc', TRUE);
-                $m_products->product_desc1 = $this->input->post('product_desc1', TRUE);
+                $m_products->size = $this->input->post('size', TRUE);
                 $m_products->category_id = $this->input->post('category_id', TRUE);
                 $m_products->item_type_id = $this->input->post('item_type_id', TRUE);
                 $m_products->income_account_id = $this->input->post('income_account_id', TRUE);
                 $m_products->expense_account_id = $this->input->post('expense_account_id', TRUE);
                 $m_products->unit_id = $this->input->post('unit_id', TRUE);
-                $m_products->is_inventory = $this->input->post('inventory',TRUE);
-                $m_products->is_tax_exempt =$this->input->post('is_tax_exempt',TRUE)?1:0;
+                //$m_products->is_inventory = $this->input->post('inventory',TRUE);
+                $m_products->is_tax_exempt =$this->input->post('is_tax_exempt',TRUE);
 
                 $m_products->equivalent_points = $this->get_numeric_value($this->input->post('equivalent_points', TRUE));
                 $m_products->product_warn =$this->get_numeric_value( $this->input->post('product_warn', TRUE));
                 $m_products->product_ideal =$this->get_numeric_value( $this->input->post('product_ideal', TRUE));
-                $m_products->markup_percent = $this->input->post('markup_percent', TRUE);
+                //$m_products->markup_percent = $this->input->post('markup_percent', TRUE);
                 $m_products->sale_price =$this->get_numeric_value($this->input->post('sale_price', TRUE));
                 $m_products->purchase_cost =$this->get_numeric_value($this->input->post('purchase_cost', TRUE));
-
+                $m_products->discounted_price =$this->get_numeric_value($this->input->post('discounted_price', TRUE));
+                $m_products->dealer_price =$this->get_numeric_value($this->input->post('dealer_price', TRUE));
+                $m_products->distributor_price =$this->get_numeric_value($this->input->post('distributor_price', TRUE));
+                $m_products->public_price =$this->get_numeric_value($this->input->post('public_price', TRUE));
 
                 $m_products->save();
 
@@ -73,7 +77,7 @@ class Products extends CORE_Controller
 
                 $response['title'] = 'Success!';
                 $response['stat'] = 'success';
-                $response['msg'] = 'product information successfully created.';
+                $response['msg'] = 'Product Information successfully created.';
 
                 $response['row_added'] = $this->response_rows($product_id);
                 echo json_encode($response);
@@ -89,30 +93,35 @@ class Products extends CORE_Controller
                 $m_products->modified_by_user = $this->session->user_id;
 
                 $m_products->product_code = $this->input->post('product_code', TRUE);
+                $m_products->product_name = $this->input->post('product_name', TRUE);
                 $m_products->product_desc = $this->input->post('product_desc', TRUE);
-                $m_products->product_desc1 = $this->input->post('product_desc1', TRUE);
+                $m_products->size = $this->input->post('size', TRUE);
                 $m_products->category_id = $this->input->post('category_id', TRUE);
                 $m_products->item_type_id = $this->input->post('item_type_id', TRUE);
                 $m_products->income_account_id = $this->input->post('income_account_id', TRUE);
                 $m_products->expense_account_id = $this->input->post('expense_account_id', TRUE);
                 $m_products->unit_id = $this->input->post('unit_id', TRUE);
-                $m_products->is_inventory = $this->input->post('inventory',TRUE);
-                $m_products->is_tax_exempt =$this->input->post('is_tax_exempt',TRUE)?1:0;
+                //$m_products->is_inventory = $this->input->post('inventory',TRUE);
+                $m_products->is_tax_exempt =$this->input->post('is_tax_exempt',TRUE);
 
 
                 $m_products->equivalent_points = $this->get_numeric_value($this->input->post('equivalent_points', TRUE));
                 $m_products->product_warn =$this->get_numeric_value( $this->input->post('product_warn', TRUE));
                 $m_products->product_ideal =$this->get_numeric_value( $this->input->post('product_ideal', TRUE));
-                $m_products->markup_percent = $this->input->post('markup_percent', TRUE);
+                //$m_products->markup_percent = $this->input->post('markup_percent', TRUE);
                 $m_products->sale_price =$this->get_numeric_value($this->input->post('sale_price', TRUE));
                 $m_products->purchase_cost =$this->get_numeric_value($this->input->post('purchase_cost', TRUE));
+                $m_products->discounted_price =$this->get_numeric_value($this->input->post('discounted_price', TRUE));
+                $m_products->dealer_price =$this->get_numeric_value($this->input->post('dealer_price', TRUE));
+                $m_products->distributor_price =$this->get_numeric_value($this->input->post('distributor_price', TRUE));
+                $m_products->public_price =$this->get_numeric_value($this->input->post('public_price', TRUE));
 
 
                 $m_products->modify($product_id);
 
-                $response['title']=$product_id;
+                $response['title']='Success!';
                 $response['stat']='success';
-                $response['msg']='Product information successfully updated.';
+                $response['msg']='Product Information successfully updated.';
                 $response['row_updated']=$this->response_rows($product_id);
                 echo json_encode($response);
 
