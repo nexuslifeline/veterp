@@ -86,14 +86,10 @@
                                 <div class="row">
                                     <div class="col-md-12">
 
-                                        <div class="panel panel-default">
-
-                                            <div class="panel-heading">
-                                                <h2>Company Snapshot</h2>
-                                            </div>
+                                        <div class="panel panel-default" style="border-top: 3px solid #2196f3;">
 
                                             <div class="panel-body table-responsive">
-
+                                            <h2>Company Snapshot</h2>
                                                 <div class="row">
 
 
@@ -237,12 +233,13 @@
                                 <div class="col-md-12">
 
                                     <div class="panel panel-default <?php echo (in_array('7-1',$this->session->user_rights)?'':'hidden'); ?>">
-                                        <div class="panel-heading">
+                                        <!-- <div class="panel-heading">
                                             <h2>Purchase Order for Approval</h2>
-                                        </div>
+                                        </div> -->
 
-                                        <div class="panel-body table-responsive">
 
+                                        <div class="panel-body table-responsive" style="border-top: 3px solid #2196f3;">
+                                        <h2>Purchase Order for Approval</h2>
                                             <table id="tbl_po_list" class="table table-striped table-bordered" cellspacing="0" width="100%">
                                                 <thead>
                                                 <tr>

@@ -133,7 +133,7 @@
 <div class="page-content"><!-- #page-content -->
 
 <ol class="breadcrumb"  style="margin-bottom: 10px;">
-    <li><a href="Dashboard">Dashboard</a> > </li>
+    <li><a href="Dashboard">Dashboard</a></li>
     <li><a href="Issuances">Issuance</a></li>
 </ol>
 
@@ -148,10 +148,11 @@
 
 
 
-    <div class="panel panel-default">
-        <div class="panel-body table-responsive">
+    <div class="panel panel-default" style="border-radius: 0; border-top: 3px solid #2196f3;">
+        <div class="panel-body table-responsive" >
+            <h2>Sales Order</h2>
             <table id="tbl_sales_order" class="table table-striped table-bordered" cellspacing="0" width="100%">
-                <thead>
+                <thead class="table-erp">
                 <tr>
                     <th></th>
                     <th>SO #</th>
@@ -169,33 +170,28 @@
                 </tbody>
             </table>
         </div>
-
-
-
-
-
-        <div class="panel-footer"></div>
     </div>
 
 </div>
 
 
 <div id="div_user_fields" style="display: none;">
-<div class="panel panel-default">
-<div class="panel-heading">
+<div class="panel panel-default" style="border-top: 3px solid #2196f3;">
+<!-- <div class="panel-heading">
     <h2>Sales Order</h2>
     <div class="panel-ctrls" data-actions-container=""></div>
-</div>
+</div> -->
 
-<div class="panel-body">
-
-    <div class="row custom_frame">
+<div class="panel-body" style="padding-top: 0;">
+<h2 class="sales_order_title"></h2>
+    <div class="row ">
         <form id="frm_sales_order" role="form" class="form-horizontal">
 
             <br /><br />
+
             <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 form-group">
-                <label class="col-md-3  control-label">* SO # :</label>
-                <div class="col-md-9">
+                <label class="col-md-4  control-label"><strong>* SO # :</strong></label>
+                <div class="col-md-8">
                     <div class="input-group">
                                                     <span class="input-group-addon">
                                                         <i class="fa fa-code"></i>
@@ -209,9 +205,9 @@
 
 
             <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 form-group">
-                <label class="col-md-3 control-label">* Customer :</label>
+                <label class="col-md-4 control-label"><strong>* Customer :</strong></label>
 
-                <div class="col-md-9">
+                <div class="col-md-8">
                     <select name="customer" id="cbo_customers" data-error-msg="Customer is required." required>
                         <option value="0">[ Create New Customer ]</option>
                         <?php foreach($customers as $customer){ ?>
@@ -226,9 +222,9 @@
 
 
             <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 form-group">
-                <label class="col-md-3 control-label">* Department :</label>
+                <label class="col-md-4 control-label"><strong>* Department :</strong></label>
 
-                <div class="col-md-9">
+                <div class="col-md-8">
                     <select name="department" id="cbo_departments" data-error-msg="Department is required." required>
                         <option value="0">[ Create New Department ]</option>
                         <?php foreach($departments as $department){ ?>
@@ -244,8 +240,8 @@
 
 
             <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 form-group">
-                <label class="col-md-3  control-label">Order date : </label>
-                <div class="col-md-9">
+                <label class="col-md-4  control-label"><strong>Order date : </strong></label>
+                <div class="col-md-8">
                     <div class="input-group">
                         <span class="input-group-addon">
                              <i class="fa fa-calendar"></i>
@@ -258,8 +254,8 @@
 
 
             <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12  form-group">
-                <label class="col-md-3  control-label">Remarks :</label>
-                <div class="col-md-9">
+                <label class="col-md-4  control-label"><strong>Remarks :</strong></label>
+                <div class="col-md-8">
                     <textarea name="remarks" class="form-control" placeholder="Remarks"></textarea>
 
                 </div>
@@ -268,8 +264,8 @@
         </form>
     </div>
 
-
-    <div class="row custom_frame">
+<hr>
+    <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><br />
             <label class="control-label" style="font-family: Tahoma;"><strong>Enter PLU or Search Item :</strong></label>
             <div id="custom-templates">
@@ -279,7 +275,7 @@
             <form id="frm_items">
                 <div class="table-responsive">
                     <table id="tbl_items" class="table table-striped table-bordered" cellspacing="0" width="100%" style="font-font:tahoma;">
-                        <thead>
+                        <thead class="table-erp">
                         <tr>
 
                             <th width="10%">Qty</th>
@@ -427,9 +423,9 @@
 <div id="modal_new_customer" class="modal fade" tabindex="-1" role="dialog"><!--modal-->
     <div class="modal-dialog modal-md">
         <div class="modal-content"><!---content--->
-            <div class="modal-header">
+            <div class="modal-header modal-erp">
                 <button type="button" class="close"   data-dismiss="modal" aria-hidden="true">X</button>
-                <h4 class="modal-title"><span id="modal_mode"> </span>New Customer</h4>
+                <h4 class="modal-title" style="color: white;"><span id="modal_mode"> </span>New Customer</h4>
 
             </div>
 
@@ -494,9 +490,9 @@
 <div id="modal_new_department" class="modal fade" tabindex="-1" role="dialog"><!--modal-->
     <div class="modal-dialog modal-md">
         <div class="modal-content"><!---content--->
-            <div class="modal-header">
+            <div class="modal-header modal-erp">
                 <button type="button" class="close"   data-dismiss="modal" aria-hidden="true">X</button>
-                <h4 class="modal-title"><span id="modal_mode"> </span>New Department</h4>
+                <h4 class="modal-title" style="color: white;"><span id="modal_mode"> </span>New Department</h4>
 
             </div>
 
@@ -648,10 +644,10 @@ $(document).ready(function(){
                 {
                     targets:[6],
                     render: function (data, type, full, meta){
-                        var btn_edit='<button class="btn btn-default btn-sm" name="edit_info"  style="margin-left:-15px;" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil"></i> </button>';
-                        var btn_trash='<button class="btn btn-default btn-sm" name="remove_info" style="margin-right:0px;" data-toggle="tooltip" data-placement="top" title="Move to trash"><i class="fa fa-trash-o"></i> </button>';
+                        var btn_edit='<button class="btn btn-primary btn-sm" name="edit_info"  style="margin-left:-15px;" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil"></i> </button>';
+                        var btn_trash='<button class="btn btn-red btn-sm" name="remove_info" style="margin-right:0px;" data-toggle="tooltip" data-placement="top" title="Move to trash"><i class="fa fa-trash-o"></i> </button>';
 
-                        return '<center>'+btn_edit+btn_trash+'</center>';
+                        return '<center>'+btn_edit+"&nbsp;"+btn_trash+'</center>';
                     }
                 }
             ]
@@ -660,7 +656,7 @@ $(document).ready(function(){
 
 
         var createToolBarButton=function(){
-            var _btnNew='<button class="btn btn-primary"  id="btn_new" style="text-transform: none;font-family: Tahoma, Georgia, Serif;" data-toggle="modal" data-target="" data-placement="left" title="Create Sales Order" >'+
+            var _btnNew='<button class="btn btn-green"  id="btn_new" style="text-transform: none;font-family: Tahoma, Georgia, Serif;" data-toggle="modal" data-target="" data-placement="left" title="Create Sales Order" >'+
                 '<i class="fa fa-file"></i> Create Sales Order</button>';
             $("div.toolbar").html(_btnNew);
         }();
@@ -941,6 +937,7 @@ $(document).ready(function(){
             _txnMode="new";
             //$('.toggle-fullscreen').click();
             clearFields($('#frm_sales_order'));
+            $('.sales_order_title').html('New Sales Order');
             showList(false);
         });
 
@@ -952,6 +949,7 @@ $(document).ready(function(){
         $('#tbl_sales_order tbody').on('click','button[name="edit_info"]',function(){
             ///alert("ddd");
             _txnMode="edit";
+            $('.sales_order_title').html('Edit Sales Order');
             _selectRowObj=$(this).closest('tr');
             var data=dt.row(_selectRowObj).data();
             _selectedID=data.sales_order_id;
@@ -1237,6 +1235,7 @@ $(document).ready(function(){
         $('input:not(.date-picker),textarea',f).val('');
         $(f).find('input:first').focus();
         $('#tbl_items > tbody').html('');
+
     };
 
 
@@ -1267,7 +1266,7 @@ $(document).ready(function(){
         '<td style="display: none;"><input name="so_tax_amount[]" type="text" class="numeric form-control" value="'+ d.so_tax_amount+'" readonly></td>'+
         '<td style="display: none;"><input name="so_non_tax_amount[]" type="text" class="numeric form-control" value="'+ d.so_non_tax_amount+'" readonly></td>'+
         '<td style="display: none;"><input name="product_id[]" type="text" class="numeric form-control" value="'+ d.product_id+'" readonly></td>'+
-        '<td align="center"><button type="button" name="remove_item" class="btn btn-default"><i class="fa fa-trash"></i></button></td>'+
+        '<td align="center"><button type="button" name="remove_item" class="btn btn-red"><i class="fa fa-trash"></i></button></td>'+
         '</tr>';
     };
 

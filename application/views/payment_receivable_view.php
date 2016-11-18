@@ -147,14 +147,11 @@
                 <div class="col-md-12">
 
                     <div id="div_payment_list">
-
-
-
-
-                        <div class="panel panel-default">
+                        <div class="panel panel-default" style="border-top: 3px solid #2196f3;">
                             <div class="panel-body table-responsive">
+                            <h2>Received Payments</h2>
                                 <table id="tbl_payments" class="table table-striped table-bordered" cellspacing="0" width="100%">
-                                    <thead>
+                                    <thead class="table-erp">
                                     <tr>
                                         <th></th>
                                         <th>Receipt #</th>
@@ -179,7 +176,7 @@
 
 
 
-                            <div class="panel-footer"></div>
+                            <!-- <div class="panel-footer"></div> -->
                         </div>
 
                     </div>
@@ -486,7 +483,7 @@ $(document).ready(function(){
         });
 
         var createToolBarButton=function(){
-            var _btnNew='<button class="btn btn-primary" id="btn_new" style="text-transform: capitalize;font-family: Tahoma, Georgia, Serif;" data-toggle="modal" data-target="" data-placement="left" title="Post New Payment" >'+
+            var _btnNew='<button class="btn btn-green" id="btn_new" style="text-transform: capitalize;font-family: Tahoma, Georgia, Serif;" data-toggle="modal" data-target="" data-placement="left" title="Post New Payment" >'+
                 '<i class="fa fa-file"></i> Post New Payment</button>';
             $("div.toolbar").html(_btnNew);
         }();

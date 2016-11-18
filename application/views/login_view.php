@@ -16,7 +16,7 @@
     <?php echo $_def_css_files; ?>
 
     <link rel="stylesheet" href="assets/plugins/spinner/dist/ladda-themeless.min.css">
-
+    <link rel="stylesheet" type="text/css" href="assets/css/style-blessed3ef7a.css">
 
 
     <style>
@@ -25,19 +25,22 @@
 
     </head>
 
-    <body class="focused-form animated-content">
+<body class="focused-form animated-content login-background">
         
         
 <div class="container" id="login-form">
 	<a href="Login" class="login-logo"></a>
 		<div class="row">
 			<div class="col-md-4 col-md-offset-4">
-				<div class="panel panel-default">
-					<div class="panel-heading">
-						<h2>Login Form</h2>
-					</div>
-					<div class="panel-body">
-						
+				<div class="panel panel-primary" style="border:none;">
+					<!-- <div class="panel-heading">
+						<h2>Login</h2>
+					</div> -->
+					<div class="panel-body" style="border-top: 3px solid #2196f3; border-radius: 0;">
+						<!-- <h2>Login Form</h2> -->
+						<div class="col-xs-12 text-center" style="margin-bottom: 20px;">
+							<img class="" src="assets/img/logo.png" style="max-width: 150px;">
+						</div>
 						<form action="#" class="form-horizontal" id="validate-form">
 							<div class="form-group mb-md">
 		                        <div class="col-xs-12">
@@ -60,7 +63,6 @@
 									</div>
 		                        </div>
 							</div>
-
 							<div class="form-group mb-n">
 								<div class="col-xs-12">
 									<a href="#" class="pull-left">Forgot password?</a>
@@ -73,12 +75,22 @@
 								</div>
 							</div>
 						</form>
+							<br>
 					</div>
 					<div class="panel-footer">
 						<div class="clearfix">
-							<button id="btn_register" class="btn btn-default pull-left">Register</button>
-							<button id="btn_login" class="btn btn-primary ladda-button pull-right" data-style="expand-left" data-spinner-color="white" data-size="l"><span class=""></span> Login</button>
-
+							<div class="row">
+								<div class="container-fluid">
+									<div class="col-xs-12 col-sm-6" style="margin-bottom: 10px;">
+										<button id="btn_register" class="btn btn-info btn-block">Register</button>
+									</div>									
+									<div class="col-xs-12 col-sm-6">
+										<button id="btn_login" class="btn btn-success btn-block ladda-button" data-style="expand-left" data-spinner-color="white" data-size="l">
+										<span class=""></span> Login
+										</button>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>

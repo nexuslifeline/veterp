@@ -359,7 +359,7 @@ class Templates extends CORE_Controller {
 
                 $info=$m_sales_invoice->get_list(
                     $filter_value,
-                    'sales_invoice.*,departments.department_name,customers.customer_name',
+                    'sales_invoice.*,departments.department_name,customers.customer_name,customers.address',
                     array(
                         array('departments','departments.department_id=sales_invoice.department_id','left'),
                         array('customers','customers.customer_id=sales_invoice.customer_id','left')

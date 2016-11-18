@@ -277,7 +277,6 @@ $(document).ready(function () {
         unmatch : function() {
             //big
             if (!($('body').hasClass('sidebar-scroll'))) { //if not already added
-                console.log('here');
                 $('.static-sidebar').removeClass('scroll-pane has-scrollbar');
                 $('.static-sidebar > .sidebar').removeClass('scroll-content');
                 $('.static-sidebar > .sidebar').css('margin-right','');

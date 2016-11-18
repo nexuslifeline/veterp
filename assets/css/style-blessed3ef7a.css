@@ -478,6 +478,29 @@
   -webkit-transform: translateY(-50%);
   -moz-transform: translateY(-50%);
 }
+
+.table-cellpadding { 
+  font-size: 12px; 
+  font-weight: normal; 
+  padding: 5px;
+}
+
+.tbl-center {
+  text-align: center;
+}
+
+.tbl-border-si {
+  border: 2px solid #757575;
+}
+
+.tbl-left {
+  text-align: left;
+}
+
+.tbl-right {
+  text-align: right;
+}
+
 .vat,
 table.table-vat > thead > tr > th,
 table.table-vat > tbody > tr > td,
@@ -537,6 +560,36 @@ table.table-vab > tfoot > tr > th {
 .tabular .gallery {
   border-collapse: collapse;
 }
+
+.btn-red {
+  background: #f55246;
+  color: #ffffff;
+}
+
+.btn-red:hover {
+  background: #f33426;
+  color: white !important;
+}
+
+.panel .panel-heading h2 {
+  color: white!important;
+}
+
+/*#btn_receive_so:hover {
+    color: #08e3ff !important;
+}
+*/
+.table-erp,
+.panel-erp {
+  background: #2196f3 !important;
+  color: #ffffff !important;
+}
+
+.modal-erp {
+  background: #526b77 !important;
+  color: #ffffff;
+}
+
 .avatar {
   width: 40px;
   height: 40px;
@@ -2635,6 +2688,15 @@ select[multiple].form-group-lg .form-control {
 .has-feedback label.sr-only ~ .form-control-feedback {
   top: 0;
 }
+
+.login-background {
+  background: #d5f2fe; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(top, #d5f2fe, #2196f3); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(top, #d5f2fe, #2196f3); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(top, #d5f2fe, #2196f3); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(top, #d5f2fe, #2196f3); /* Standard syntax */
+}
+
 .help-block {
   display: block;
   margin-top: 5px;
@@ -7898,11 +7960,9 @@ fieldset[disabled] .btn-magenta.active {
   background-color: #ffffff;
 }
 .btn-green {
-  background-color: #4caf50 !important;
-  border-color: #4caf50 !important;
+  background-color: #6ec071;
+  border: none;
   color: #ffffff;
-  background-color: #4caf50;
-  border-color: #4caf50;
 }
 .btn-green:hover,
 .btn-green:focus,
@@ -7911,8 +7971,8 @@ fieldset[disabled] .btn-magenta.active {
 .btn-green.active,
 .open > .dropdown-toggle.btn-green {
   color: #ffffff;
-  background-color: #3d8b40;
-  border-color: #39843c;
+  background-color: #62bb66;
+  border: none;
 }
 .btn-green:active,
 .btn-green.active,
