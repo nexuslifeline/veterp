@@ -581,7 +581,8 @@ table.table-vab > tfoot > tr > th {
 */
 .table-erp,
 .panel-erp {
-  background: #2196f3 !important;
+  /*background: #2196f3 !important;*/
+  background: #2980B9 !important;
   color: #ffffff !important;
 }
 

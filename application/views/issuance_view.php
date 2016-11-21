@@ -37,7 +37,7 @@
         }
 
         td.details-control {
-            background: url('assets/img/Folder_Closed.png') no-repeat center center;
+            background: url('assets/img/print.png') no-repeat center center;
             cursor: pointer;
         }
         tr.details td.details-control {
@@ -149,9 +149,10 @@
 
 
     <div class="panel panel-default">
-        <div class="panel-body table-responsive">
+        <div class="panel-body table-responsive" style="border-top: 3px solid #2196f3;">
+        <h2>Item Issuance</h2>
             <table id="tbl_issuances" class="table table-striped table-bordered" cellspacing="0" width="100%">
-                <thead>
+                <thead class="table-erp">
                 <tr>
                     <th></th>
                     <th>Slip #</th>
@@ -173,186 +174,178 @@
 
 
 
-        <div class="panel-footer"></div>
+        <!-- <div class="panel-footer"></div> -->
     </div>
 
 </div>
 
 
 <div id="div_user_fields" style="display: none;">
-<div class="panel panel-default">
-<div class="panel-heading">
+<div class="panel panel-default" style="border-top: 3px solid #2196f3;">
+<!-- <div class="panel-heading">
     <h2>Item Issuance</h2>
     <div class="panel-ctrls" data-actions-container=""></div>
-</div>
+</div> -->
 
 <div class="panel-body">
-
-<div class="row custom_frame">
-    <form id="frm_issuances" role="form" class="form-horizontal">
-
-        <br /><br />
-        <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 form-group">
-            <label class="col-md-3  control-label">* Slip # :</label>
-            <div class="col-md-9">
-                <div class="input-group">
-                                                    <span class="input-group-addon">
-                                                        <i class="fa fa-code"></i>
-                                                    </span>
-                    <input type="text" name="slip_no" class="form-control" placeholder="SLP-YYYYMMDD-XXX" readonly>
-                </div>
-            </div>
-        </div>
-
-
-
-
-        <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12  form-group">
-            <label class="col-md-3  control-label">Issue :</label>
-            <div class="col-md-9">
-                <div class="input-group">
-                                                            <span class="input-group-addon">
-                                                                <i class="fa fa-users"></i>
-                                                            </span>
-                    <input type="text" name="issued_to_person" class="form-control" placeholder="Issue to person">
-                </div>
-            </div>
-        </div>
-
-
-        <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 form-group">
-            <label class="col-md-3 control-label">* Department :</label>
-
-            <div class="col-md-9">
-                <select name="department" id="cbo_departments" data-error-msg="Department is required." required>
-                    <option value="0">[ Create New Department ]</option>
-                    <?php foreach($departments as $department){ ?>
-                        <option value="<?php echo $department->department_id; ?>" data-tax-type="<?php echo $department->department_id; ?>"><?php echo $department->department_name; ?></option>
-                    <?php } ?>
-                </select>
-
-
-            </div>
-
-        </div>
-
-
-        <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 form-group">
-            <label class="col-md-3  control-label">Date issued : </label>
-            <div class="col-md-9">
-                <div class="input-group">
+<h2 id="item_issuance_title"></h2>
+<div class="row ">
+    <div class="container-fluid">
+        <div class="btn btn-green" style="margin-left: 10px;">
+            <strong><a id="btn_receive_so" href="#" style="text-decoration: none; color: white;">Create from Sales Invoice</a></strong>
+        </div>    
+        <form id="frm_issuances" role="form" class="form-horizontal">
+            <br /><br />
+            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 form-group">
+                <label class="col-md-4  control-label"><strong>* Slip # :</strong></label>
+                <div class="col-md-8">
+                    <div class="input-group">
                         <span class="input-group-addon">
-                             <i class="fa fa-calendar"></i>
+                            <i class="fa fa-code"></i>
                         </span>
-                    <input type="text" name="date_issued" class="date-picker form-control" value="<?php echo date("m/d/Y"); ?>" placeholder="Date issued" data-error-msg="Please set the date this items are issued!" required>
+                        <input type="text" name="slip_no" class="form-control" placeholder="SLP-YYYYMMDD-XXX" readonly>
+                    </div>
                 </div>
             </div>
-        </div>
-
-
-
-        <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12  form-group">
-            <label class="col-md-3  control-label">Remarks :</label>
-            <div class="col-md-9">
-                <textarea name="remarks" class="form-control" placeholder="Remarks"></textarea>
-
+            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12  form-group">
+                <label class="col-md-4  control-label"><strong>Issue :</strong></label>
+                <div class="col-md-8">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-users"></i>
+                        </span>
+                        <input type="text" name="issued_to_person" class="form-control" placeholder="Issue to person">
+                    </div>
+                </div>
             </div>
-        </div>
+            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 form-group">
+                <label class="col-md-4 control-label"><strong>* Department :</strong></label>
 
-    </form>
+                <div class="col-md-8">
+                    <select name="department" id="cbo_departments" data-error-msg="Department is required." required>
+                        <option value="0">[ Create New Department ]</option>
+                        <?php foreach($departments as $department){ ?>
+                            <option value="<?php echo $department->department_id; ?>" data-tax-type="<?php echo $department->department_id; ?>"><?php echo $department->department_name; ?></option>
+                        <?php } ?>
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 form-group">
+                <label class="col-md-4  control-label"><strong>Date issued : </strong></label>
+                <div class="col-md-8">
+                    <div class="input-group">
+                            <span class="input-group-addon">
+                                 <i class="fa fa-calendar"></i>
+                            </span>
+                        <input type="text" name="date_issued" class="date-picker form-control" value="<?php echo date("m/d/Y"); ?>" placeholder="Date issued" data-error-msg="Please set the date this items are issued!" required>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12  form-group">
+                <label class="col-md-4  control-label"><strong>Remarks :</strong></label>
+                <div class="col-md-8">
+                    <textarea name="remarks" class="form-control" placeholder="Remarks"></textarea>
+                </div>
+            </div>
+
+        </form>
+    </div>
 </div>
 
+<hr>
+<div class="row">
+    <div class="container-fluid">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><br />
+            <label class="control-label" style="font-family: Tahoma;"><strong>Enter PLU or Search Item :</strong></label>
+            <div id="custom-templates">
+                <input class="typeahead" type="text" placeholder="Enter PLU or Search Item">
+            </div><br />
 
-<div class="row custom_frame">
-    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><br />
-        <label class="control-label" style="font-family: Tahoma;"><strong>Enter PLU or Search Item :</strong></label>
-        <div id="custom-templates">
-            <input class="typeahead" type="text" placeholder="Enter PLU or Search Item">
-        </div><br />
-
-        <form id="frm_items">
-            <div class="table-responsive">
-                <table id="tbl_items" class="table table-striped table-bordered" cellspacing="0" width="100%" style="font-font:tahoma;">
-                    <thead>
-                    <tr>
-
-                        <th width="10%">Qty</th>
-                        <th width="5%">UM</th>
-                        <th width="30%">Item</th>
-                        <th width="12%" style="text-align: right">Unit Price</th>
-                        <th width="12%" style="text-align: right">Discount</th>
-                        <th style="display: none;">T.D</th> <!-- total discount -->
-                        <th>Tax %</th>
-                        <th width="12%" style="text-align: right">Total</th>
-                        <th style="display: none;">V.I</th> <!-- vat input -->
-                        <th style="display: none;">N.V</th> <!-- net of vat -->
-                        <td style="display: none;">Item ID</td><!-- product id -->
-                        <th><center>Action</center></th>
-
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <!--<tr>
-
-                                                <td width="10%"><input type="text" class="numeric form-control" align="right"></td>
-                                                <td width="5%">pcs</td>
-                                                <td width="30%">Computer Case</td>
-                                                <td width="12%"><input type="text" class="numeric form-control"></td>
-                                                <td width="12%"><input type="text" class="numeric form-control"></td>
-                                                <td></td>
-                                                <td width="15%">
-                                                    <select class="form-control">
-                                                        <?php foreach($tax_types as $tax_type){ ?>
-                                                            <option value="<?php echo $tax_type->tax_type_id; ?>"><?php echo $tax_type->tax_type; ?></option>
-                                                        <?php } ?>
-                                                    </select>
-                                                </td>
-                                                <td width="12%" align="right"><input type="text" class="numeric form-control"></td>
-                                                <td></td>
-                                                <td></td>
-
-                                                <td><button type="button" class="btn btn-default"><i class="fa fa-trash"></i></button></td>
-                                            </tr>-->
-                    </tbody>
-
-
-                </table>
-            </div>
-        </form>
-
-        <div class="row">
-            <div class="col-lg-3 col-lg-offset-9">
+            <form id="frm_items">
                 <div class="table-responsive">
-                    <table id="tbl_issuance_summary" class="table invoice-total" style="font-family: tahoma;">
+                    <table id="tbl_items" class="table table-striped table-bordered" cellspacing="0" width="100%" style="font-font:tahoma;">
+                        <thead class="table-erp">
+                        <tr>
+
+                            <th width="10%">Qty</th>
+                            <th width="5%">UM</th>
+                            <th width="30%">Item</th>
+                            <th width="12%" style="text-align: right">Unit Price</th>
+                            <th width="12%" style="text-align: right">Discount</th>
+                            <th style="display: none;">T.D</th> <!-- total discount -->
+                            <th>Tax %</th>
+                            <th width="12%" style="text-align: right">Total</th>
+                            <th style="display: none;">V.I</th> <!-- vat input -->
+                            <th style="display: none;">N.V</th> <!-- net of vat -->
+                            <td style="display: none;">Item ID</td><!-- product id -->
+                            <th><center>Action</center></th>
+
+                        </tr>
+                        </thead>
                         <tbody>
+                        <!--<tr>
 
-                        <tr>
-                            <td>Discount :</td>
-                            <td align="right">0.00</td>
-                        </tr>
+                                                    <td width="10%"><input type="text" class="numeric form-control" align="right"></td>
+                                                    <td width="5%">pcs</td>
+                                                    <td width="30%">Computer Case</td>
+                                                    <td width="12%"><input type="text" class="numeric form-control"></td>
+                                                    <td width="12%"><input type="text" class="numeric form-control"></td>
+                                                    <td></td>
+                                                    <td width="15%">
+                                                        <select class="form-control">
+                                                            <?php foreach($tax_types as $tax_type){ ?>
+                                                                <option value="<?php echo $tax_type->tax_type_id; ?>"><?php echo $tax_type->tax_type; ?></option>
+                                                            <?php } ?>
+                                                        </select>
+                                                    </td>
+                                                    <td width="12%" align="right"><input type="text" class="numeric form-control"></td>
+                                                    <td></td>
+                                                    <td></td>
 
-                        <tr>
-                            <td>Total before Tax :</td>
-                            <td align="right">0.00</td>
-                        </tr>
-                        <tr>
-                            <td>Tax :</td>
-                            <td align="right">0.00</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Total After Tax :</strong></td>
-                            <td align="right"><b>0.00</b></td>
-                        </tr>
-
-
+                                                    <td><button type="button" class="btn btn-default"><i class="fa fa-trash"></i></button></td>
+                                                </tr>-->
                         </tbody>
+
+
                     </table>
                 </div>
+            </form>
+
+            <div class="row">
+                <div class="col-lg-3 col-lg-offset-9">
+                    <div class="table-responsive">
+                        <table id="tbl_issuance_summary" class="table invoice-total" style="font-family: tahoma;">
+                            <tbody>
+
+                            <tr>
+                                <td>Discount :</td>
+                                <td align="right">0.00</td>
+                            </tr>
+
+                            <tr>
+                                <td>Total before Tax :</td>
+                                <td align="right">0.00</td>
+                            </tr>
+                            <tr>
+                                <td>Tax :</td>
+                                <td align="right">0.00</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Total After Tax :</strong></td>
+                                <td align="right"><b>0.00</b></td>
+                            </tr>
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
+
+
         </div>
-
-
     </div>
+    
 </div>
 
 
@@ -394,6 +387,16 @@
 </div> <!-- #page-content -->
 </div>
 
+<div id="modal_sales_order" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+                <h4 class="modal-title"><span id="modal_mode"> </span></h4>
+            </div>
+        </div>
+    </div>
+</div>
 
 <div id="modal_confirmation" class="modal fade" tabindex="-1" role="dialog"><!--modal-->
     <div class="modal-dialog modal-sm">
@@ -460,9 +463,24 @@
     </div>
 </div><!---modal-->
 
-
-
-
+<div id="modal_item_issuance" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-md">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header modal-erp" style="padding: 5px !important;">
+                    <button type="button" class="close"   data-dismiss="modal" aria-hidden="true">X</button>
+                    <h2 style="color: white; padding-left: 10px; font-weight: 200;">Item Issuance</h2>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <itemIssuance id="item_issuance">
+                        </itemIssuance>
+                    </div>                
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 
@@ -571,10 +589,10 @@ $(document).ready(function(){
                 {
                     targets:[5],
                     render: function (data, type, full, meta){
-                        var btn_edit='<button class="btn btn-default btn-sm" name="edit_info"  style="margin-left:-15px;" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil"></i> </button>';
-                        var btn_trash='<button class="btn btn-default btn-sm" name="remove_info" style="margin-right:0px;" data-toggle="tooltip" data-placement="top" title="Move to trash"><i class="fa fa-trash-o"></i> </button>';
+                        var btn_edit='<button class="btn btn-primary btn-sm" name="edit_info"  style="margin-left:-15px;" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil"></i> </button>';
+                        var btn_trash='<button class="btn btn-red btn-sm" name="remove_info" style="margin-right:0px;" data-toggle="tooltip" data-placement="top" title="Move to trash"><i class="fa fa-trash-o"></i> </button>';
 
-                        return '<center>'+btn_edit+btn_trash+'</center>';
+                        return '<center>'+btn_edit+"&nbsp;"+btn_trash+'</center>';
                     }
                 }
             ]
@@ -583,7 +601,7 @@ $(document).ready(function(){
 
 
         var createToolBarButton=function(){
-            var _btnNew='<button class="btn btn-primary"  id="btn_new" style="text-transform: none;font-family: Tahoma, Georgia, Serif;" data-toggle="modal" data-target="" data-placement="left" title="Record item to issue" >'+
+            var _btnNew='<button class="btn btn-green"  id="btn_new" style="text-transform: none;font-family: Tahoma, Georgia, Serif;" data-toggle="modal" data-target="" data-placement="left" title="Record item to issue" >'+
                 '<i class="fa fa-file"></i> Record item to issue</button>';
             $("div.toolbar").html(_btnNew);
         }();
@@ -712,7 +730,16 @@ $(document).ready(function(){
         $('#tbl_issuances tbody').on( 'click', 'tr td.details-control', function () {
             var tr = $(this).closest('tr');
             var row = dt.row( tr );
-            var idx = $.inArray( tr.attr('id'), detailRows );
+            var d=row.data();
+                $.ajax({
+                    "dataType":"html",
+                    "type":"POST",
+                    "url":"Templates/layout/issuance/"+ d.issuance_id+"?type=fullview"
+                }).done(function(response){
+                    $("#item_issuance").html(response);
+                    $("#modal_item_issuance").modal('show');
+                });
+            /*var idx = $.inArray( tr.attr('id'), detailRows );
 
             if ( row.child.isShown() ) {
                 tr.removeClass( 'details' );
@@ -744,7 +771,7 @@ $(document).ready(function(){
 
 
 
-            }
+            }*/
         } );
 
 
@@ -820,6 +847,7 @@ $(document).ready(function(){
 
         $('#btn_new').click(function(){
             _txnMode="new";
+            $('#item_issuance_title').html('Record Item to Issue');
             //$('.toggle-fullscreen').click();
             clearFields($('#frm_issuances'));
             showList(false);
@@ -843,6 +871,7 @@ $(document).ready(function(){
         $('#tbl_issuances tbody').on('click','button[name="edit_info"]',function(){
             ///alert("ddd");
             _txnMode="edit";
+            $('#item_issuance_title').html('Edit Item to issue');
             _selectRowObj=$(this).closest('tr');
             var data=dt.row(_selectRowObj).data();
             _selectedID=data.issuance_id;

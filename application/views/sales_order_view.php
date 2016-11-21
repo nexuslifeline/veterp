@@ -193,9 +193,9 @@
                 <label class="col-md-4  control-label"><strong>* SO # :</strong></label>
                 <div class="col-md-8">
                     <div class="input-group">
-                                                    <span class="input-group-addon">
-                                                        <i class="fa fa-code"></i>
-                                                    </span>
+                        <span class="input-group-addon">
+                            <i class="fa fa-code"></i>
+                        </span>
                         <input type="text" name="slip_no" class="form-control" placeholder="SO-YYYYMMDD-XXX" readonly>
                     </div>
                 </div>
@@ -206,7 +206,6 @@
 
             <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 form-group">
                 <label class="col-md-4 control-label"><strong>* Customer :</strong></label>
-
                 <div class="col-md-8">
                     <select name="customer" id="cbo_customers" data-error-msg="Customer is required." required>
                         <option value="0">[ Create New Customer ]</option>
@@ -214,16 +213,12 @@
                             <option value="<?php echo $customer->customer_id; ?>"><?php echo $customer->customer_name; ?></option>
                         <?php } ?>
                     </select>
-
-
                 </div>
-
             </div>
 
 
             <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 form-group">
                 <label class="col-md-4 control-label"><strong>* Department :</strong></label>
-
                 <div class="col-md-8">
                     <select name="department" id="cbo_departments" data-error-msg="Department is required." required>
                         <option value="0">[ Create New Department ]</option>
@@ -231,10 +226,7 @@
                             <option value="<?php echo $department->department_id; ?>"><?php echo $department->department_name; ?></option>
                         <?php } ?>
                     </select>
-
-
                 </div>
-
             </div>
 
 

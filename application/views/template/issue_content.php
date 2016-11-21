@@ -1,6 +1,16 @@
+<div class="row">
+    <div class="container-fluid">
+        <table>
+            <tbody>
+                <tr>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
 
-
-<div>
+<!-- <div>
     <center><table width="95%" cellpadding="5" style="font-family: tahoma;font-size: 11">
             <tr>
                 <td width="45%" valign="top">
@@ -79,7 +89,7 @@
             </tfoot>
         </table><br /><br />
     </center>
-</div>
+</div> -->
 
 
 

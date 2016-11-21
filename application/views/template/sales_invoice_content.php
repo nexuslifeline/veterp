@@ -117,12 +117,12 @@
             <tbody>
                 <tr>
                     <td width="15%"> </td>
-                    <td width="15%"> </td>
+                    <td width="15%"></td>
                     <td class="table-cellpadding" width="70%">RECEIVED the above-mentioned quantity and merchandise in good order, condition and to my/our full and complete satisfaction. I/We agree to the conditions stipulated therein.</td>
                 </tr>
                 <tr>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
+                    <td style="border-bottom: 1px solid #404040;">&nbsp;</td>
+                    <td style="border-bottom: 1px solid #404040;">&nbsp;</td>
                     <td>&nbsp;</td>
                 </tr>
                 <tr style="text-align: center;">

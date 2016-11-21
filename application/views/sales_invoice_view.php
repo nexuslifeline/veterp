@@ -209,7 +209,6 @@
     <div class="panel-ctrls" data-actions-container=""></div>
         <div class="row ">
             <form id="frm_sales_invoice" role="form" class="form-horizontal">
-
                 <br /><br />
                 <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 form-group">
                     <label class="col-md-4 control-label"><strong>* Invoice # :</strong></label>
@@ -228,9 +227,9 @@
                     <label class="col-md-4  control-label"><strong> SO # :</strong></label>
                     <div class="col-md-8">
                         <div class="input-group">
-                                                    <span class="input-group-addon">
-                                                        <i class="fa fa-code"></i>
-                                                    </span>
+                            <span class="input-group-addon">
+                                <i class="fa fa-code"></i>
+                            </span>
                             <input type="text" name="so_no" class="form-control" placeholder="Click 'Create from Sales Order'">
                         </div>
                     </div>
@@ -247,10 +246,7 @@
                                 <option value="<?php echo $customer->customer_id; ?>"><?php echo $customer->customer_name; ?></option>
                             <?php } ?>
                         </select>
-
-
                     </div>
-
                 </div>
 
 
@@ -486,25 +482,25 @@
                     </tr>
                     </thead>
                     <tbody>
-
-
-
+                        <!-- Sales Order Content -->
                     </tbody>
                 </table>
             </div>
 
             <div class="modal-footer">
                 <button id="btn_accept" type="button" class="btn btn-green" data-dismiss="modal" style="text-transform: none;font-family: Tahoma, Georgia, Serif;">Receive this Order</button>
-                <button type="button" class="btn btn-default" data-dismiss="modal" style="text-transform: none;font-family: Tahoma, Georgia, Serif;">Cancel</button>
+                <button type="button" class="btn btn-default" data-
+                dismiss="modal" style="text-transform: none;font-family: Tahoma, Georgia, Serif;">Cancel</button>
             </div>
         </div><!---content---->
     </div>
 </div><!---modal-->
+
 <div id="modal_sales_invoice" class="modal fade" role="dialog">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header modal-erp" style="padding: 5px !important;">
-                <h3 style="color:white; padding-left: 10px;">Sales Invoice</h3>
+                <h2 style="color:white; padding-left: 10px;">Sales Invoice</h2>
             </div>
             <div class="modal-body">
                 <div class="container-fluid" style="overflow: scroll; width: 100%;">
@@ -515,24 +511,23 @@
         </div>
     </div>
 </div>
+
 <div id="modal_new_customer" class="modal fade" tabindex="-1" role="dialog"><!--modal-->
     <div class="modal-dialog modal-md">
         <div class="modal-content"><!---content--->
             <div class="modal-header">
-                <button type="button" class="close"   data-dismiss="modal" aria-hidden="true">X</button>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
                 <h4 class="modal-title"><span id="modal_mode"> </span>New Customer</h4>
-
             </div>
 
             <div class="modal-body">
                 <form id="frm_customer_new">
-
                     <div class="form-group">
                         <label>* Customer :</label>
                         <div class="input-group">
-                                                <span class="input-group-addon">
-                                                    <i class="fa fa-users"></i>
-                                                </span>
+                            <span class="input-group-addon">
+                                <i class="fa fa-users"></i>
+                            </span>
                             <input type="text" name="customer_name" class="form-control" placeholder="Customer" data-error-msg="Customer name is required." required>
                         </div>
                     </div>

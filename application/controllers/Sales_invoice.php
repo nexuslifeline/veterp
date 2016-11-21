@@ -50,7 +50,7 @@ class Sales_invoice extends CORE_Controller
             array(
                 'products.product_id',
                 'products.product_code',
-                'products.product_desc',
+                'products.product_desc' ,
                 'products.product_desc1',
                 'products.is_tax_exempt',
                 'FORMAT(products.sale_price,2)as sale_price',
